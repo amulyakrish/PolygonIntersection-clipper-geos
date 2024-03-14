@@ -1,0 +1,350 @@
+Double threaded SIMD rtree and spatial join:
+polySketch spatial join: Average elapsed time over 1000 iterations: 519.882022 miliseconds
+
+ Performance counter stats for './ttree':
+
+   417,119,646,675      dTLB-loads:u                                                  (79.99%)
+       296,341,171      dTLB-load-misses:u        #    0.07% of all dTLB cache hits   (79.96%)
+   417,314,075,886      L1-dcache-loads:u                                             (79.95%)
+     1,375,316,350      L1-dcache-load-misses:u   #    0.33% of all L1-dcache hits    (80.08%)
+       138,103,706      LLC-load-misses:u                                             (80.04%)
+
+     520.241496321 seconds time elapsed
+
+     267.098939000 seconds user
+    1318.157302000 seconds sys
+    
+Float SIMD rtree and spatial join:
+polySketch spatial join: Average elapsed time over 1000 iterations: 64.946039 miliseconds
+
+ Performance counter stats for './ftree':
+
+    74,386,481,739      dTLB-loads:u                                                  (80.00%)
+        12,739,056      dTLB-load-misses:u        #    0.02% of all dTLB cache hits   (80.00%)
+    74,423,653,125      L1-dcache-loads:u                                             (80.00%)
+       248,231,553      L1-dcache-load-misses:u   #    0.33% of all L1-dcache hits    (80.00%)
+         5,072,268      LLC-load-misses:u                                             (80.00%)
+
+      67.863743112 seconds time elapsed
+
+      47.209380000 seconds user
+      20.644962000 seconds sys
+
+Double SIMD rtree and spatial join:
+polySketch spatial join: Average elapsed time over 1000 iterations: 102.857642 miliseconds
+
+ Performance counter stats for './tree':
+
+   104,069,654,108      dTLB-loads:u                                                  (80.00%)
+         7,716,283      dTLB-load-misses:u        #    0.01% of all dTLB cache hits   (80.00%)
+   104,061,183,837      L1-dcache-loads:u                                             (80.00%)
+       390,777,253      L1-dcache-load-misses:u   #    0.38% of all L1-dcache hits    (80.01%)
+        30,921,200      LLC-load-misses:u                                             (80.00%)
+
+     107.760168952 seconds time elapsed
+
+      72.701368000 seconds user
+      35.025875000 seconds sys
+
+NoSIMD rtree and spatial join:
+polySketch spatial join: Average elapsed time over 1000 iterations: 223.207160 miliseconds
+
+ Performance counter stats for './stree':
+
+   295,688,389,463      dTLB-loads:u                                                  (80.00%)
+        75,942,218      dTLB-load-misses:u        #    0.03% of all dTLB cache hits   (80.00%)
+   295,639,330,156      L1-dcache-loads:u                                             (80.00%)
+     3,325,049,780      L1-dcache-load-misses:u   #    1.12% of all L1-dcache hits    (80.00%)
+       190,245,981      LLC-load-misses:u                                             (80.00%)
+
+     228.057219923 seconds time elapsed
+
+     191.974106000 seconds user
+      36.069252000 seconds sys
+
+
+Clipper: Average elapsed time over 100 iterations: 111.258780 miliseconds  //Intersection opertion might do more work in clipper
+
+
+
+
+SIMD rtree creation and spatial join on S and C polygon:
+
+Average elapsed time over 1000 iterations: 79.670548 miliseconds
+
+SIMD and thread rtree creation and spatial join on S and C polygon:
+
+BundleFactor = 200
+polySketch spatial join: Average elapsed time over 1000 iterations: 601.988717 miliseconds
+
+ Performance counter stats for './tree':
+
+      1,068,800.91 msec task-clock:u              #    1.775 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+         1,315,799      page-faults:u             #    0.001 M/sec                  
+ 1,049,067,514,932      cycles:u                  #    0.982 GHz                    
+ 2,561,685,868,335      instructions:u            #    2.44  insn per cycle         
+   177,254,161,600      branches:u                #  165.844 M/sec                  
+       600,996,119      branch-misses:u           #    0.34% of all branches        
+
+     602.180439805 seconds time elapsed
+
+     460.772956000 seconds user
+     729.106524000 seconds sys
+
+BundleFactor = 250
+polySketch spatial join: Average elapsed time over 1000 iterations: 604.881578 miliseconds
+
+ Performance counter stats for './tree':
+
+      1,022,562.57 msec task-clock:u              #    1.690 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+         1,331,680      page-faults:u             #    0.001 M/sec                  
+ 1,048,004,534,230      cycles:u                  #    1.025 GHz                    
+ 2,561,684,352,088      instructions:u            #    2.44  insn per cycle         
+   177,253,768,552      branches:u                #  173.343 M/sec                  
+       594,334,559      branch-misses:u           #    0.34% of all branches        
+
+     605.052642062 seconds time elapsed
+
+     467.633406000 seconds user
+     676.749549000 seconds sys
+
+
+BundleFactor = 150
+polySketch spatial join: Average elapsed time over 1000 iterations: 585.898179 miliseconds
+
+ Performance counter stats for './tree':
+
+      1,280,174.26 msec task-clock:u              #    2.184 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+         2,008,358      page-faults:u             #    0.002 M/sec                  
+   785,942,626,823      cycles:u                  #    0.614 GHz                    
+ 1,824,037,071,965      instructions:u            #    2.32  insn per cycle         
+   127,895,876,325      branches:u                #   99.905 M/sec                  
+       659,933,564      branch-misses:u           #    0.52% of all branches        
+
+     586.170076950 seconds time elapsed
+
+     379.959026000 seconds user
+    1072.350525000 seconds sys
+
+BundleFactor = 100
+polySketch spatial join: Average elapsed time over 1000 iterations: 564.076811 miliseconds
+
+ Performance counter stats for './tree':
+
+      1,570,236.20 msec task-clock:u              #    2.782 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+         2,737,512      page-faults:u             #    0.002 M/sec                  
+   500,410,570,509      cycles:u                  #    0.319 GHz                    
+ 1,025,671,715,990      instructions:u            #    2.05  insn per cycle         
+    73,681,511,094      branches:u                #   46.924 M/sec                  
+       647,882,556      branch-misses:u           #    0.88% of all branches        
+
+     564.382742622 seconds time elapsed
+
+     274.430208000 seconds user
+    1522.628579000 seconds sys
+
+
+
+
+
+
+SIMD Spatial Join on S and C Polygons:
+
+using sys/time.h library
+
+Average elapsed time over 1000 iterations: 4.619557 miliseconds
+
+after adding SIMD to unionRect
+Average elapsed time over 1000 iterations: 4.646747 miliseconds
+
+Performance counter stats for './tree':
+
+            200.76 msec task-clock:u              #    0.976 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+            17,237      page-faults:u             #    0.086 M/sec                  
+       316,791,995      cycles:u                  #    1.578 GHz                    
+       863,254,587      instructions:u            #    2.72  insn per cycle         
+       182,414,779      branches:u                #  908.631 M/sec                  
+           229,737      branch-misses:u           #    0.13% of all branches        
+
+       0.205596040 seconds time elapsed
+
+       0.149625000 seconds user
+       0.051870000 seconds sys
+
+
+
+Performance counter stats for './tree':
+
+     10,738,618,100      dTLB-loads:u                                                
+         5,088,546      dTLB-load-misses:u        #    0.05% of all dTLB cache hits 
+
+       4.823205402 seconds time elapsed
+
+       4.760938000 seconds user
+       0.056999000 seconds sys
+Performance counter stats for './tree':
+
+            33,706      LLC-load-misses:u                                           
+
+       4.912761365 seconds time elapsed
+
+       4.862240000 seconds user
+       0.046992000 seconds sys
+Performance counter stats for './tree':
+
+     10,738,620,009      L1-dcache-loads:u                                           
+       183,334,945      L1-dcache-load-misses:u   #    1.71% of all L1-dcache hits  
+
+       4.881306419 seconds time elapsed
+
+       4.828702000 seconds user
+       0.049007000 seconds sys
+
+
+
+
+
+
+
+NoSIMD Spatial Join on S and C Polygons:
+
+using sys/time.h library
+
+Average elapsed time over 1000 iterations: 89.487443 miliseconds
+
+
+Performance counter stats for './stree':
+
+            329.09 msec task-clock:u              #    0.977 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+            17,746      page-faults:u             #    0.054 M/sec                  
+       581,263,866      cycles:u                  #    1.766 GHz                    
+     1,400,779,151      instructions:u            #    2.41  insn per cycle         
+       257,848,204      branches:u                #  783.524 M/sec                  
+           951,500      branch-misses:u           #    0.37% of all branches        
+
+       0.336805221 seconds time elapsed
+
+       0.277614000 seconds user
+       0.052361000 seconds sys
+
+Performance counter stats for './stree':
+
+    205,547,576,115      dTLB-loads:u                                                
+        67,224,839      dTLB-load-misses:u        #    0.03% of all dTLB cache hits 
+
+      91.047726427 seconds time elapsed
+
+      90.899837000 seconds user
+       0.142996000 seconds sys
+Performance counter stats for './stree':
+
+        127,052,268      LLC-load-misses:u                                           
+
+      89.436929487 seconds time elapsed
+
+      89.328834000 seconds user
+       0.095992000 seconds sys
+Performance counter stats for './stree':
+
+    205,547,775,268      L1-dcache-loads:u                                           
+     3,059,104,425      L1-dcache-load-misses:u   #    1.49% of all L1-dcache hits  
+
+      89.698103449 seconds time elapsed
+
+      89.523105000 seconds user
+       0.168998000 seconds sys
+
+
+
+perf stat -e dTLB-loads,dTLB-load-misses ./tree
+
+LLC-load-misses 
+
+perf stat -e L1-dcache-loads,L1-dcache-load-misses
+
+
+
+SIMD Spatial Join on S and S translated polygons:
+
+Average elapsed time over 1000 iterations: 2.176300 miliseconds
+
+ Performance counter stats for './tree':
+
+     3,031,996,609      dTLB-loads:u                                                
+        14,344,440      dTLB-load-misses:u        #    0.47% of all dTLB cache hits 
+
+       2.416717924 seconds time elapsed
+
+       2.336415000 seconds user
+       0.074981000 seconds sys
+Average elapsed time over 1000 iterations: 2.235238 miliseconds
+
+ Performance counter stats for './tree':
+
+     3,031,999,390      L1-dcache-loads:u                                           
+       163,220,436      L1-dcache-load-misses:u   #    5.38% of all L1-dcache hits  
+
+       2.447451640 seconds time elapsed
+
+       2.374200000 seconds user
+       0.073006000 seconds sys
+Average elapsed time over 1000 iterations: 2.285172 miliseconds
+
+ Performance counter stats for './tree':
+
+            45,463      LLC-load-misses:u                                           
+
+       2.496223888 seconds time elapsed
+
+       2.432369000 seconds user
+       0.061983000 seconds sys
+
+
+NOSIMD:
+
+Average elapsed time over 1000 iterations: 137.173928 miliseconds
+
+ Performance counter stats for './stree':
+
+   289,769,923,121      dTLB-loads:u                                                
+        75,999,199      dTLB-load-misses:u        #    0.03% of all dTLB cache hits 
+
+     137.390496784 seconds time elapsed
+
+     137.207711000 seconds user
+       0.162981000 seconds sys
+
+Average elapsed time over 1000 iterations: 137.237739 miliseconds
+
+ Performance counter stats for './stree':
+
+   289,769,915,483      L1-dcache-loads:u                                           
+     4,406,724,762      L1-dcache-load-misses:u   #    1.52% of all L1-dcache hits  
+
+     137.476478369 seconds time elapsed
+
+     137.312670000 seconds user
+       0.144985000 seconds sys
+
+Average elapsed time over 1000 iterations: 139.619409 miliseconds
+
+ Performance counter stats for './stree':
+
+       359,713,584      LLC-load-misses:u                                           
+
+     139.851097449 seconds time elapsed
+
+     139.717527000 seconds user
+       0.128997000 seconds sys

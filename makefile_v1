@@ -1,0 +1,25 @@
+CC = g++
+
+CFLAGS = -O3 -Wall -c
+
+LFLAGS1 = -mavx
+
+LFLAGS2 = -mavx512f
+
+all: rtreeindex_512.o buildTree_512.o readSCPolygon.o segseg.o
+		$(CC) -O3 $(LFLAGS2) -o tree rtreeindex_512.o buildTree_512.o readSCPolygon.o segseg.o
+     
+rtreeindex_512.o: rtreeindex_512.cpp
+		$(CC) $(CFLAGS) $(LFLAGS2) rtreeindex_512.cpp
+
+buildTree_512.o: buildTree_512.cpp
+		$(CC) $(CFLAGS) $(LFLAGS2) buildTree_512.cpp
+	
+readSCPolygon.o: readSCPolygon.cpp
+		$(CC) $(CFLAGS) readSCPolygon.cpp
+	
+segseg.o: segseg.cpp
+		$(CC) $(CFLAGS) $(LFLAGS1) segseg.cpp
+	
+clean:
+		rm *o tree

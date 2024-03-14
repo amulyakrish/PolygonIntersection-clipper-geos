@@ -1,0 +1,25 @@
+CC = g++
+
+CFLAGS = -O2 -Wall -c
+
+LFLAGS1 = -mavx512f
+
+LFLAGS2 = -mavx
+
+all: rtreeindexNOSIMD.o buildTree.o readSCPolygon.o segseg.o
+		$(CC) -O2 -o s1 rtreeindexNOSIMD.o buildTree.o readSCPolygon.o segseg.o
+     
+rtreeindexNOSIMD.o: rtreeindexNOSIMD.cpp
+		$(CC) $(CFLAGS) rtreeindexNOSIMD.cpp
+
+buildTree.o: buildTree.cpp
+		$(CC) $(CFLAGS) buildTree.cpp
+	
+readSCPolygon.o: readSCPolygon.cpp
+		$(CC) $(CFLAGS) readSCPolygon.cpp
+	
+segseg.o: segseg.cpp
+		$(CC) $(CFLAGS) $(LFLAGS1) segseg.cpp
+	
+clean:
+		rm *o s1
